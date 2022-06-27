@@ -13,7 +13,8 @@ gem 'simple_form'
 gem 'slim-rails'
 gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 5.0'
-gem 'mysql2'
+#gem 'mysql2'
+gem 'pg'
 gem 'bootstrap-sass'
 gem 'razorpay'
 
@@ -34,6 +35,12 @@ group :test do
   gem 'capybara', '>= 3.26'
   gem 'selenium-webdriver'
   gem 'webdrivers'
+end
+
+group :production do
+  #gem 'mysql2'
+  gem 'pg'
+  gem 'rails_12factor', '0.0.2'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
