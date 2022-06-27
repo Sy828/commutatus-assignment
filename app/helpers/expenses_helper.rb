@@ -14,6 +14,8 @@ module ExpensesHelper
                 end  
                 index = index+1 
             end
+        else
+            UserExpenseSpending.create!(user_id: current_user.id,expense_id: expense.id,shared_amount: params[:exp_amount],total_amount: params[:exp_amount],expense_date: params[:expense_date],borrowed_or_lent: params[:borroed_or_lent],paid_by: current_user.id,deactivated: false,transaction_flag: "done")
         end  
     end 
 
