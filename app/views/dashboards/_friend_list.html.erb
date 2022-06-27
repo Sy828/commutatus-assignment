@@ -1,0 +1,13 @@
+<aside class="side-bar-area">
+    <div class="friends-list">
+      <p class="friends-list-header">FRIENDS</p> 
+       <button class="btn btn-primary" data-bs-target="#friendModal" data-bs-toggle="modal" type="button">Add Friends</button>
+      <% if !@friend_list.nil? && !@friend_list.blank? %>
+        <%@friend_list.each do |friend|%>
+            <a class="friend-name"><%=friend.name%></a>
+        <%end%>
+      <%else%>
+           <a class="friend-name">No record</a>
+      <%end%>
+    </div>
+</aside>

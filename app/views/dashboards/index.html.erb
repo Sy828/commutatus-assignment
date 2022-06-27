@@ -1,0 +1,75 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/css/bootstrap-select.css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.13.1/js/bootstrap-select.min.js"></script>
+<div class="dashboard-wrapper">
+  <%= render :partial => 'friend_list' %>
+  <div class="main-area">
+    <div class="top-bar">
+      <h1 class="top-bar-title">Dashboard</h1>
+      <div class="top-bar-actions">
+        <button class="btn btn-primary" data-bs-target="#expenseModal" data-bs-toggle="modal" type="button"> Add an expense</button>
+        <button class="btn btn-secondary" data-bs-target="#settleUpModal" data-bs-toggle="modal" type="button"> Settle up
+        </button>
+      </div>
+    </div>
+    <div class="dashboard-balances">
+      <div class="balances-bar">
+        <div class="balance-block">
+          <p>total balance</p>
+          <p><%= @incr_decr%> <%= @total_bal%></p>
+        </div>
+        <div class="balance-block">
+          <p>you owe</p>
+          <p>$<%= @total_amt_to_be_pay%></p>
+        </div>
+        <div class="balance-block">
+          <p>you are owed</p>
+          <p>$<%= @total_amt_to_get %></p>
+        </div>
+      </div>
+      <div class="dashboard-detail">
+        <div class="detail-block height400">
+          <h2 class="detail-title">you owe</h2>
+            <% if !@user_owe.nil? && !@user_owe.blank? %>
+                <%@user_owe.each do |user_owe_obj|%>
+                   <div class="user-detail">
+                      <img alt="profile" class="user-img" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" />
+                      <div class="user-info">
+                        <p><%=user_owe_obj.name%></p>
+                        <p>owes you $ <%=user_owe_obj.shared_amount%></p>
+                        <p>From expense <%=user_owe_obj.exp_name%></p>
+                      </div>
+                    </div>
+                <%end%>
+            <%else%>
+                <p>No record</p>
+            <%end%>
+     
+        </div>
+        <div class="detail-block height400">
+          <h2 class="detail-title">you are owed</h2>
+            <% if !@user_are_owed.nil? && !@user_are_owed.blank? %>
+                <%@user_are_owed.each do |user_owed_obj|%>
+                   <div class="user-detail">
+                      <img alt="profile" class="user-img" src="https://cdn.icon-icons.com/icons2/1378/PNG/512/avatardefault_92824.png" />
+                      <div class="user-info">
+                        <p><%=user_owed_obj.name%></p>
+                        <p>owes you $<%=user_owed_obj.shared_amount%></p>
+                        <p>From expense <%=user_owed_obj.exp_name%></p>
+                      </div>
+                    </div>
+                <%end%>
+            <%else%>
+                <p>No record</p>
+            <%end%>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<%= render :partial => 'add_expense_modal' %>
+<%= render :partial => 'add_friend_modal' %>
+<%= render :partial => 'settle_up_modal' %>
