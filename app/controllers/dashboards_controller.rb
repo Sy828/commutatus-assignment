@@ -8,7 +8,8 @@ class DashboardsController < ApplicationController
      
     @dashboards = Dashboard.all
     @friend_list = User.fetch_all_user(current_user.id)
-    @expense_list = Expense.fetch_all_expenses(current_user.id)
+    @expense_list = Expense.fetch_unpaid_expenses(current_user.id)
+    @all_expense_list = Expense.fetch_all_expenses(current_user.id)
     @user_are_owed=User.fetch_details_of_user_transactions(current_user.id,0)
     @user_owe=User.fetch_details_of_user_transactions(current_user.id,1)
     @total_amt_to_be_pay = @user_owe.to_a.map { |e| e.shared_amount }.sum
@@ -67,6 +68,10 @@ class DashboardsController < ApplicationController
       format.html { redirect_to dashboards_url, notice: "Dashboard was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def fetch_expense_details 
+    @exp_details=expense_details(params,current_user.id) 
   end
 
   private

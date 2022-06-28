@@ -1,0 +1,3 @@
+
+$("#expense_content").append("<%= escape_javascript("#{render :partial => 'dashboards/fetch_expense_details.html.erb',:locals => {:exp_details=> @exp_details}}").html_safe %>");
+$('#expense_modal_id').modal('show');

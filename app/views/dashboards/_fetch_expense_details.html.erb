@@ -1,0 +1,42 @@
+<div aria-hidden="true" aria-labelledby="expdetailModalLabel" class="modal fade" id="expense_modal_id" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="expdetailModalLabel">Expense Details</h5>
+        <button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button">
+        </button></div>
+      <div class="modal-body">
+            <div class="row">
+                <div class="col-md-5 invite_drop_modal">
+                    <label for="" class="form-label">Name : <%= exp_details.name%> </label>
+                </div>
+
+                <div class="col-md-5 invite_drop_modal">
+                    <label for="" class="form-label">Total Amount : <%= exp_details.total_amount%> </label>
+                </div>
+
+                <div class="col-md-5 invite_drop_modal">
+                    <label for="" class="form-label">Description : <%= exp_details.description%> </label>
+                </div>
+
+                <div class="col-md-5 invite_drop_modal">
+                    <label for="" class="form-label">Divided Amount : <%= exp_details.shared_amount%> </label>
+                </div>
+
+                <div class="col-md-5 invite_drop_modal">
+                    <label for="" class="form-label">Date : <%= exp_details.expense_date.try(:strftime, "%d/%m/%Y")%> </label>
+                </div>
+               
+            </div>
+            
+            
+
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary cancel_invite"  data-bs-dismiss="modal">Cancel</button>
+            </div>
+      </div>
+      
+    </div>
+  </div>
+</div>
+

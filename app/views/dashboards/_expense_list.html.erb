@@ -1,0 +1,22 @@
+<aside class="side-bar-area">
+    <div class="friends-list">
+      <p class="friends-list-header">ALL EXPENSES</p> 
+      <div class="height400">
+      <% if !@all_expense_list.nil? && !@all_expense_list.blank? %>
+        <%@all_expense_list.each do |expense|%>
+            <a class="friend-name" onclick = "fetch_expense_details(<%=expense.id%>)"><%=expense.name%></a>
+        <%end%>
+      <%else%>
+           <a class="friend-name">No record</a>
+      <%end%>
+      </div>
+    </div>
+</aside>
+
+<script>
+
+function fetch_expense_details(expID){
+    $.get("/dashboards/fetch_expense_details.js?expense_id="+expID, function(data) {
+	  });
+}
+</script>
