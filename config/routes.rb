@@ -1,5 +1,5 @@
 Rails.application.routes.draw do 
-  resources :dashboards
+
   devise_for :users
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 
@@ -22,5 +22,10 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :dashboards do
+    collection do
+      get :fetch_expense_details
+    end
+  end
 
 end
